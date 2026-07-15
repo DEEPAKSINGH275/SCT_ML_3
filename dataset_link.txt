@@ -1,0 +1,7 @@
+## Dataset
+
+Download the dataset from Kaggle:
+
+https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset
+
+After downloading, place the extracted `PetImages_Small` folder in the project directory.
