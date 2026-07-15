@@ -2,37 +2,27 @@
 
 ## Overview
 
-This project implements a **Support Vector Machine (SVM)** to classify images of cats and dogs from the Kaggle Cats vs Dogs dataset. Images are preprocessed, resized, converted to grayscale, and transformed into **Histogram of Oriented Gradients (HOG)** features before being classified using an **RBF Kernel SVM**.
+This project implements a **Support Vector Machine (SVM)** to classify images of cats and dogs from the **Kaggle Cats vs Dogs** dataset. Images are resized, converted to grayscale, and transformed into **Histogram of Oriented Gradients (HOG)** features before being classified using an **RBF Kernel SVM**.
+
+---
 
 ## Objective
 
-To build an image classification model capable of distinguishing between **cats** and **dogs** using traditional machine learning techniques.
+To develop an image classification model capable of accurately distinguishing between **cats** and **dogs** using traditional machine learning techniques.
 
 ---
 
 ## Dataset
 
-The project uses the **Kaggle Cats vs Dogs** dataset.
+This project uses the **Microsoft Cats vs Dogs** dataset available on Kaggle.
 
-### Dataset Structure
+The dataset contains:
 
-```
-PetImages_Small/
-├── Cat/
-│   ├── 0.jpg
-│   ├── 1.jpg
-│   └── ...
-└── Dog/
-    ├── 0.jpg
-    ├── 1.jpg
-    └── ...
-```
+- **5,000 Cat images**
+- **5,000 Dog images**
+- **Total Images:** 10,000
 
-### Dataset Used
-
-- 5,000 Cat images
-- 5,000 Dog images
-- Total Images: **10,000**
+> **Dataset Download:** See `dataset_link.txt`
 
 ---
 
@@ -48,35 +38,26 @@ PetImages_Small/
 
 ---
 
-## Image Preprocessing
+## Workflow
 
-- Resized all images to **64 × 64** pixels.
-- Converted images to grayscale.
-- Extracted **Histogram of Oriented Gradients (HOG)** features.
-- Standardized feature vectors using **StandardScaler**.
+1. Load the image dataset.
+2. Resize images to **64 × 64** pixels.
+3. Convert images to grayscale.
+4. Extract **HOG (Histogram of Oriented Gradients)** features.
+5. Standardize the feature vectors.
+6. Split the dataset into training and testing sets.
+7. Train an **SVM classifier (RBF Kernel)**.
+8. Predict labels for test images.
+9. Evaluate model performance.
+10. Visualize predictions and confusion matrix.
 
 ---
 
 ## Machine Learning Model
 
-- **Support Vector Machine (SVM)**
+- **Algorithm:** Support Vector Machine (SVM)
 - **Kernel:** Radial Basis Function (RBF)
-- **Feature Extraction:** HOG (Histogram of Oriented Gradients)
-
----
-
-## Steps Performed
-
-1. Imported the required libraries.
-2. Loaded the Cats and Dogs image dataset.
-3. Resized and converted images to grayscale.
-4. Extracted HOG features from each image.
-5. Split the dataset into training and testing sets.
-6. Standardized the extracted features.
-7. Trained the SVM classifier.
-8. Predicted the class labels for the test images.
-9. Evaluated the model using performance metrics.
-10. Visualized the confusion matrix and sample predictions.
+- **Feature Extraction:** Histogram of Oriented Gradients (HOG)
 
 ---
 
@@ -101,24 +82,37 @@ The model was evaluated using:
 
 ---
 
-## Output
+## Results
 
-The notebook generates:
+The HOG + SVM model successfully classified cats and dogs with an overall **77.35% accuracy**.
+
+The project also generates:
 
 - Classification Report
 - Confusion Matrix
-- Sample Test Image Predictions (Actual vs Predicted Labels)
+- Sample Image Predictions
+
+### Confusion Matrix
+
+![Confusion Matrix](Confusion_Matrix.png)
+
+### Sample Predictions
+
+![Sample Predictions](Sample_Predictions.png)
 
 ---
 
 ## Project Structure
 
 ```
-├── PetImages_Small/
-│   ├── Cat/
-│   └── Dog/
+SCT_ML_3/
+│
 ├── Cats_Dogs_SVM.ipynb
-└── README.md
+├── README.md
+├── requirements.txt
+├── dataset_link.txt
+├── Confusion_Matrix.png
+└── Sample_Predictions.png
 ```
 
 ---
@@ -128,34 +122,39 @@ The notebook generates:
 Install the required libraries:
 
 ```bash
-pip install numpy opencv-python matplotlib scikit-learn scikit-image
+pip install -r requirements.txt
 ```
 
 ---
 
 ## How to Run
 
-1. Upload the `PetImages_Small` dataset to Google Colab.
-2. Install the required libraries.
-3. Run all notebook cells.
-4. The SVM model will be trained on the training dataset.
-5. View the classification report, confusion matrix, and prediction results.
+1. Download the dataset using the link provided in `dataset_link.txt`.
+2. Upload the dataset to Google Colab.
+3. Install the required dependencies.
+4. Run all notebook cells.
+5. View the evaluation metrics and prediction results.
 
 ---
 
 ## Future Improvements
 
-- Perform hyperparameter tuning using **GridSearchCV**.
-- Use color-based feature extraction.
-- Compare SVM with Random Forest and K-Nearest Neighbors.
-- Use deep feature extraction with **MobileNetV2** or **ResNet50** while keeping SVM as the classifier.
-- Increase image resolution for richer feature representation.
+- Hyperparameter tuning using GridSearchCV.
+- Experiment with different HOG parameters.
+- Compare SVM with Decision Tree, Random Forest, and KNN.
+- Use transfer learning (MobileNetV2/ResNet50) for feature extraction while keeping SVM as the classifier.
+- Increase image resolution to improve feature representation.
 
 ---
 
-## Results
+## Repository Contents
 
-The HOG + SVM approach achieved an overall **77.35% classification accuracy**, demonstrating that traditional machine learning techniques combined with handcrafted image features can effectively classify cats and dogs without using deep learning models.
+- **Cats_Dogs_SVM.ipynb** – Complete implementation
+- **README.md** – Project documentation
+- **requirements.txt** – Required Python libraries
+- **dataset_link.txt** – Dataset download link
+- **Confusion_Matrix.png** – Model evaluation
+- **Sample_Predictions.png** – Sample prediction results
 
 ---
 
